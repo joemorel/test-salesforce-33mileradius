@@ -1,6 +1,7 @@
 {
   "name": "test-salesforce-33mileradius",
   "version": "0.0.1",
+  "main": "index.js",
   "dependencies": {
     "ps":""
   },
