@@ -1,0 +1,10 @@
+{
+  "name": "test-salesforce-33mileradius",
+  "version": "0.0.1",
+  "dependencies": {
+    "ps":""
+  },
+  "devDependencies": {
+    "jasmine-node": ""
+  }
+}
