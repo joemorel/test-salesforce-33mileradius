@@ -1,9 +1,10 @@
 {
   "name": "test-salesforce-33mileradius",
   "version": "0.0.1",
-  "main": "index.js",
+  "main": "app.js",
   "dependencies": {
     "async": "^2.4.1",
+    "express": "^4.15.3",
     "pg": "^6.2.3"
   },
   "devDependencies": {
