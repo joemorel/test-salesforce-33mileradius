@@ -13,7 +13,7 @@ function onRequest(request,response) {
     console.log("Request received.");
     response.writeHead(200,{"Content-Type":"text/json"});
     pg.connect(process.env.DATABASE_URL, function(err, client) {
-        client.query('SELECT * from account;')
+        client.query('SELECT * from salesforce.account;')
         .on('row', function(row) {
             response.write(JSON.stringify(row));
             response.end();
