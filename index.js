@@ -16,10 +16,9 @@ function onRequest(request,response) {
         client.query('SELECT * from salesforce.account;')
         .on('row', function(row) {
             response.write(JSON.stringify(row));
-            response.end();
         });
     });
-
+    response.end();
 }
 
 http.createServer(onRequest).listen(port);
