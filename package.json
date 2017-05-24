@@ -6,7 +6,7 @@
   },
   "devDependencies": {
     "jasmine-node": ""
-  }
+  },
   "scripts": {
     "start": "node index.js"
   }
