@@ -18,7 +18,7 @@ var port = process.env.PORT || 8888;
 
 app.get('/',function(req,res) {
     console.log("hit root with GET");
-    res.send('Hello, world!');
+    res.send('<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><title>33 Mile Radius Login</title></head><body><h1>Welcome to the 33 Mile Radius Platform!</h1><h3>Login here:</h3><form action="/login" method="POST"><label>Email: </label><input type="text" name="email" length="20"/><br/><label>Password:</label><input type="password" name="passsword" length="20"/><br/><input type="submit"/></form></body></html>');
 });
 
 app.get('/account',function(req,res) {
