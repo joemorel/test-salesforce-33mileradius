@@ -6,6 +6,9 @@
 const express = require('express');
 const app = express();
 const pg = require('pg');
+const bodyParser = require('body-parser');
+app.use(bodyParser.json);
+app.use(bodyParser.urlencoded({extended: true}));
 const connectionString = process.env.DATABASE_URL || "postgres://localhost:5432/testsalesforce";
 console.log(connectionString);
 const client = new pg.Client(connectionString);
