@@ -37,7 +37,7 @@ app.get('/account',function(req,res) {
 
 app.post('/account',function(req,res) {
    client.connect();
-   var queryText = "INSERT INTO salesforce.account (phone, website, name, description, accountnumber) VALUES (" + req.body.phone + "," + req.body.website + "," + req.body.name + "," + req.body.description + "," + req.body.accountnumber + ")";
+   var queryText = "INSERT INTO salesforce.account (phone, website, name, description, accountnumber) VALUES ('" + req.body.phone + "','" + req.body.website + "','" + req.body.name + "','" + req.body.description + "','" + req.body.accountnumber + "')";
    console.log(queryText);
    const query = client.query(queryText);
    query.on('end', function(result) {
