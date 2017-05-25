@@ -6,7 +6,8 @@
 const express = require('express');
 const app = express();
 const pg = require('pg');
-const connectionString = process.env.DATABASE_URL;
+const connectionString = process.env.DATABASE_URL || "postgres://localhost:5432/testsalesforce";
+console.log(connectionString);
 const client = new pg.Client(connectionString);
 
 var port = process.env.PORT || 8888;
@@ -26,6 +27,14 @@ app.get('/account',function(req,res) {
         res.end();
         client.end();
     });
+});
+
+app.post('/account',function(req,res) {
+   client.connect();
+    console.log("Output:",req.body.phone);
+   const query = client.query(
+       "INSERT INTO salesforce.account (phone, website, name, description, accountnumber) VALUES(",req.body.phone,",",req.body.website,",",req.body.name,",",req.body.description,req.body.accountnumber,")"
+   );
 });
 
 app.listen(port, function() {
