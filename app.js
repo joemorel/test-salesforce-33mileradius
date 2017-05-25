@@ -40,7 +40,7 @@ app.post('/login', function(req,res) {
     var queryText = "SELECT name from salesforce.account where email__c = '" + req.body.email + "' and password__c = '" + req.body.password + "'";
     console.log(queryText);
     const query = client.query(queryText);
-    query.on('row', function(error, result) {
+    query.on('row', function(result, error) {
         res.write("Welcome to the platform " + result.name);
     });
     query.on('end',function(){
