@@ -41,7 +41,6 @@ app.post('/account',function(req,res) {
    const query = client.query(
        "INSERT INTO salesforce.account (phone, website, name, description, accountnumber) VALUES (",req.body.phone,",",req.body.website,",",req.body.name,",",req.body.description,req.body.accountnumber,")"
    );
-   console.log(query.text());
    query.on('end', function(result) {
        res.write(result);
        res.end();
