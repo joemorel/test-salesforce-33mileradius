@@ -41,7 +41,7 @@ app.post('/login', function(req,res) {
     console.log(queryText);
     const query = client.query(queryText);
     query.on('row', function(error, result) {
-        res.write("Welcome to the platform " + row.name);
+        res.write("Welcome to the platform " + result.name);
     });
     query.on('end',function(){
         res.end();
