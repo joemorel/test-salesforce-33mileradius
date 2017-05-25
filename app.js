@@ -22,7 +22,7 @@ app.get('/',function(req,res) {
 app.get('/account',function(req,res) {
     client.connect();
     const query = client.query(
-        "SELECT createddate, phone, website, name, description, accountnumber from salesforce.account");
+        "SELECT createddate, phone, website, name, description, accountnumber from salesforce.account;");
     query.on('row', function(row,err) {
         res.write(JSON.stringify(row));
     });
@@ -36,8 +36,18 @@ app.post('/account',function(req,res) {
    client.connect();
     console.log("Output:",req.body.phone);
    const query = client.query(
-       "INSERT INTO salesforce.account (phone, website, name, description, accountnumber) VALUES(",req.body.phone,",",req.body.website,",",req.body.name,",",req.body.description,req.body.accountnumber,")"
+       "INSERT INTO salesforce.account (phone, website, name, description, accountnumber) VALUES (",req.body.phone,",",req.body.website,",",req.body.name,",",req.body.description,req.body.accountnumber,");"
    );
+   console.log(query.text());
+   query.on('end', function() {
+       res.write("OK");
+       res.end();
+       client.end();
+   });
+
+   query.on('err', function(err) {
+       console.log(err);
+   });
 });
 
 app.listen(port, function() {
