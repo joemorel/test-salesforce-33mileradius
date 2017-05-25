@@ -41,8 +41,7 @@ app.post('/account',function(req,res) {
    console.log(queryText);
    const query = client.query(queryText);
    query.on('end', function(result) {
-       res.write(result);
-       res.end();
+       res.send(result.toString());
        client.end();
    });
 
