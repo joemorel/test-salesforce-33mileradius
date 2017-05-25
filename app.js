@@ -35,6 +35,23 @@ app.get('/account',function(req,res) {
     });
 });
 
+app.post('/login', function(req,res) {
+    client.connect();
+    var queryText = "SELECT name from salesforce.account where email__c = '" + req.body.email + "' and password__c = '" + req.body.password + "'";
+    console.log(queryText);
+    const query = client.query(queryText);
+    query.on('row', function(row) {
+        res.send("Welcome to the platform",row.name);
+    });
+    query.on('end',function(){
+        client.end();
+    });
+    query.on('error',function(error) {
+        res.send(error);
+        client.end();
+    });
+});
+
 app.post('/account',function(req,res) {
    client.connect();
    var queryText = "INSERT INTO salesforce.account (phone, website, name, description, accountnumber) VALUES ('" + req.body.phone + "','" + req.body.website + "','" + req.body.name + "','" + req.body.description + "','" + req.body.accountnumber + "')";
