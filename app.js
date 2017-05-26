@@ -11,7 +11,7 @@ app.use(bodyParser.urlencoded({
     extended: true
 }));
 //app.use(express.static('public'));
-const connectionString = process.env.DATABASE_URL || "postgres://localhost:5432/testsalesforce";
+const connectionString = process.env.DATABASE_URL || "postgres://localhost:5432/salesforcetest";
 console.log(connectionString);
 const client = new pg.Client(connectionString);
 console.log("created PostgreSQL client");
