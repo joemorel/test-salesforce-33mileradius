@@ -10,7 +10,7 @@ var bodyParser = require('body-parser');
 app.use(bodyParser.urlencoded({
     extended: true
 }));
-app.use(express.static('public'));
+//app.use(express.static('public'));
 const connectionString = process.env.DATABASE_URL || "postgres://localhost:5432/testsalesforce";
 console.log(connectionString);
 const client = new pg.Client(connectionString);
@@ -19,7 +19,7 @@ var port = process.env.PORT || 8888;
 
 app.get('/',function(req,res) {
     console.log("hit root with GET");
-    res.sendfile('/public/login_form.html',{root: './public'});
+    res.sendFile('/login_form.html',{root: './public'});
 });
 
 app.get('/account',function(req,res) {
